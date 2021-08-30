@@ -2,16 +2,9 @@ import PropTypes from 'prop-types';
 
 import s from './Statistics.module.css';
 
-const colorPicker = () => {
-  const red = Math.round(Math.random() * 255);
-  const green = Math.round(Math.random() * 255);
-  const blue = Math.round(Math.random() * 255);
-  const backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 
-  return backgroundColor;
-};
-
-const Statistics = ({ title, stats }) => (
+export default function Statistics({ title, stats }) {
+  return (
   <section className={s.statistics}>
     {title && <h2 className={s.title}>{title}</h2>}
 
@@ -28,11 +21,21 @@ const Statistics = ({ title, stats }) => (
       ))}
     </ul>
   </section>
-);
+ );
+}      
 
 Statistics.defaultProps = {
   title: '',
 };
+
+function colorPicker () {
+  const red = Math.round(Math.random() * 255);
+  const green = Math.round(Math.random() * 255);
+  const blue = Math.round(Math.random() * 255);
+
+  return `rgb(${red}, ${green}, ${blue})`;
+};
+
 
 Statistics.propTypes = {
   title: PropTypes.string.isRequired,
@@ -45,4 +48,4 @@ Statistics.propTypes = {
   ).isRequired,
 };
 
-export default Statistics;
+

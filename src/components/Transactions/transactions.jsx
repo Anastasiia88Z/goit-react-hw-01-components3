@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import s from './TransactionsHistory.module.css';
 
-const TransactionHistory = ({ items }) => (
+export default function TransactionHistory({ items }) { 
+ return (
   <table className={s.transactionHistory}>
     <thead>
       <tr>
@@ -12,16 +13,17 @@ const TransactionHistory = ({ items }) => (
     </thead>
 
     <tbody>
-      {items.map(item => (
-        <tr key={item.id} className={s.titleItem}>
-          <td className={s.titleItem_text}>{item.type}</td>
-          <td className={s.titleItem_text}>{item.amount}</td>
-          <td className={s.titleItem_text}>{item.currency}</td>
+      {items.map(({id, type, amount, currency}) => (
+        <tr key={id} className={s.titleItem}>
+          <td className={s.titleItem_text}>{type}</td>
+          <td className={s.titleItem_text}>{amount}</td>
+          <td className={s.titleItem_text}>{currency}</td>
         </tr>
       ))}
     </tbody>
   </table>
-);
+ );
+}
 
 TransactionHistory.propTypes = {
   items: PropTypes.arrayOf(
@@ -34,4 +36,4 @@ TransactionHistory.propTypes = {
   ),
 };
 
-export default TransactionHistory;
+
